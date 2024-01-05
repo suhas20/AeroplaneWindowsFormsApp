@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 
@@ -19,12 +21,22 @@ namespace WindowsFormsApp1
             UpdateSeatsGrid();
         }
 
-        private void InitializeSeatsGrid() // Add this method
+        private void btnSortByName_Click(object sender, EventArgs e)
+        {
+            seats = seats.OrderBy(s => s.PassengerName).ToList();
+            UpdateSeatsGrid();
+        }
+
+        private void btnSortBySeatNumber_Click(object sender, EventArgs e)
+        {
+            seats = seats.OrderBy(s => s.SeatNumber).ToList();
+            UpdateSeatsGrid();
+        }
+
+        private void InitializeSeatsGrid()
         {
             dataGridView = new DataGridView();
             dataGridView.Dock = DockStyle.Fill;
-
-            // Assuming Seat is the class you are using
             dataGridView.ColumnCount = 5;
             dataGridView.Columns[0].Name = "SeatNumber";
             dataGridView.Columns[1].Name = "PassengerName";
@@ -56,6 +68,5 @@ namespace WindowsFormsApp1
                 dataGridView.Rows.Add(seat.SeatNumber, seat.PassengerName, seat.IsAssigned, seat.SeatType, seat.Class);
             }
         }
-
     }
 }

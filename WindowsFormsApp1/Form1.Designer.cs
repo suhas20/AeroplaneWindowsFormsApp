@@ -176,6 +176,7 @@
             0,
             0,
             0});
+            this.numPassengersSelector.ValueChanged += new System.EventHandler(this.numPassengersSelector_ValueChanged);
             // 
             // radioBtnWindow
             // 

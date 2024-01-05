@@ -46,36 +46,31 @@ namespace WindowsFormsApp1
         }
         private SeatType GetSeatTypeEco(int seatIndex)
         {
-            if (seatIndex % 6 == 0 || (seatIndex - 5) % 6 == 0) // First or sixth seat in each row is a Window seat
+            if (seatIndex % 6 == 0 || (seatIndex - 5) % 6 == 0) // First and sixth seat in each row is a Window seat
             {
                 return SeatType.WINDOW;
             }
-            else if ((seatIndex - 1) % 6 == 0 || (seatIndex - 4) % 6 == 0) // Second or third seat in each row is a Center seat
+            else if ((seatIndex - 1) % 6 == 0 || (seatIndex - 4) % 6 == 0) // Second and fifth seat in each row is a Center seat
             {
                 return SeatType.CENTER;
             }
-            else if ((seatIndex - 2) % 6 == 0 || (seatIndex - 3) % 6 == 0) // Fourth or fifth seats are Aisle seats
+            else if ((seatIndex - 2) % 6 == 0 || (seatIndex - 3) % 6 == 0) // Third and Fourth seats are Aisle seats
             {
                 return SeatType.AISLE;
             }
             else
             {
-                // This should not happen if you have exactly 6 seats per row, but handle any other cases accordingly
                 return SeatType.UNKNOWN;
             }
         }
 
         private SeatType GetSeatType(int seatIndex)
         {
-            if (seatIndex % 4 == 0 || (seatIndex - 3) % 4 == 0) // First seat in each row is a Window seat
+            if (seatIndex % 4 == 0 || (seatIndex - 3) % 4 == 0) // First and fourth seat in each row is a Window seat
             {
                 return SeatType.WINDOW;
             }
-            /*else if ((seatIndex - 1) % 4 == 0) // Second seat in each row is a Center seat
-            {
-                return SeatType.CENTER;
-            }*/
-            else /*if ((seatIndex - 2) % 4 == 0 || (seatIndex - 3) % 4 == 0)*/ // Third and fourth seats are Aisle seats
+            else  //Second and Third seats are Aisle seats
             {
                 return SeatType.AISLE;
             }
@@ -248,6 +243,25 @@ namespace WindowsFormsApp1
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void numPassengersSelector_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateNumericUpDownMaximum();
+        }
+
+        private void UpdateNumericUpDownMaximum()
+        {
+            TravelClass selectedClass = radioBtnFirstClass.Checked ? TravelClass.FIRST_CLASS : TravelClass.ECONOMY_CLASS;
+
+            if (selectedClass == TravelClass.FIRST_CLASS)
+            {
+                numPassengersSelector.Maximum = 2;
+            }
+            else if (selectedClass == TravelClass.ECONOMY_CLASS)
+            {
+                numPassengersSelector.Maximum = 3;
+            }
         }
     }
 }
