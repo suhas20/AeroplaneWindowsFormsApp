@@ -195,6 +195,60 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            string passengerNameToDelete = textBox1.Text.Trim();
+
+            if (string.IsNullOrEmpty(passengerNameToDelete))
+            {
+                MessageBox.Show("Please enter a passenger name to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            TravelClass classTypeToDelete = radioBtnFirstClass.Checked ? TravelClass.FIRST_CLASS : TravelClass.ECONOMY_CLASS;
+
+            bool seatDeleted = DeleteSeat(passengerNameToDelete, classTypeToDelete);
+
+            if (seatDeleted)
+            {
+                MessageBox.Show($"Seat for passenger '{passengerNameToDelete}' in {classTypeToDelete} class deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //UpdateSeatsGrid();
+            }
+            else
+            {
+                MessageBox.Show($"No seat found for passenger '{passengerNameToDelete}' in {classTypeToDelete} class.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private bool DeleteSeat(string passengerName, TravelClass classType)
+        {
+            List<Seat> seatsToDeleteFrom;
+
+            if (classType == TravelClass.FIRST_CLASS)
+            {
+                seatsToDeleteFrom = firstClassSeats;
+            }
+            else
+            {
+                seatsToDeleteFrom = economyClassSeats;
+            }
+
+            Seat seatToDelete = seatsToDeleteFrom.FirstOrDefault(seat => seat.PassengerName == passengerName);
+
+            if (seatToDelete != null)
+            {
+                seatToDelete.PassengerName = "";
+                seatToDelete.IsAssigned = false;
+                return true;
+            }
+
+            return false;
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
 

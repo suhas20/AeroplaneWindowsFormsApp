@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -36,7 +36,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnAssignSeats = new System.Windows.Forms.Button();
             this.btnShowSeating = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.radioBtnFirstClass = new System.Windows.Forms.RadioButton();
             this.radioBtnEconomyClass = new System.Windows.Forms.RadioButton();
             this.numPassengersSelector = new System.Windows.Forms.NumericUpDown();
@@ -49,14 +49,15 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // btnExit
             // 
-            this.button1.Location = new System.Drawing.Point(348, 347);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 39);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "EXIT";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnExit.Location = new System.Drawing.Point(348, 347);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(130, 39);
+            this.btnExit.TabIndex = 4;
+            this.btnExit.Text = "EXIT";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // textBox1
             // 
@@ -114,22 +115,23 @@
             // 
             // btnShowSeating
             // 
-            this.btnShowSeating.Location = new System.Drawing.Point(440, 266);
+            this.btnShowSeating.Location = new System.Drawing.Point(440, 261);
             this.btnShowSeating.Name = "btnShowSeating";
-            this.btnShowSeating.Size = new System.Drawing.Size(111, 39);
+            this.btnShowSeating.Size = new System.Drawing.Size(111, 48);
             this.btnShowSeating.TabIndex = 11;
-            this.btnShowSeating.Text = "FIRST CLASS";
+            this.btnShowSeating.Text = "First Class Passanger List";
             this.btnShowSeating.UseVisualStyleBackColor = true;
             this.btnShowSeating.Click += new System.EventHandler(this.btnShowSeating_Click);
             // 
-            // button4
+            // btnDelete
             // 
-            this.button4.Location = new System.Drawing.Point(296, 266);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(111, 39);
-            this.button4.TabIndex = 12;
-            this.button4.Text = "DELETE";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnDelete.Location = new System.Drawing.Point(296, 266);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(111, 39);
+            this.btnDelete.TabIndex = 12;
+            this.btnDelete.Text = "DELETE";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // radioBtnFirstClass
             // 
@@ -205,7 +207,7 @@
             this.radioBtnAisle.Size = new System.Drawing.Size(65, 20);
             this.radioBtnAisle.TabIndex = 18;
             this.radioBtnAisle.TabStop = true;
-            this.radioBtnAisle.Text = "ASILE";
+            this.radioBtnAisle.Text = "AISLE";
             this.radioBtnAisle.UseVisualStyleBackColor = true;
             // 
             // groupBox1
@@ -223,11 +225,11 @@
             // 
             // btnShowSeatingEco
             // 
-            this.btnShowSeatingEco.Location = new System.Drawing.Point(590, 266);
+            this.btnShowSeatingEco.Location = new System.Drawing.Point(590, 261);
             this.btnShowSeatingEco.Name = "btnShowSeatingEco";
-            this.btnShowSeatingEco.Size = new System.Drawing.Size(111, 39);
+            this.btnShowSeatingEco.Size = new System.Drawing.Size(111, 48);
             this.btnShowSeatingEco.TabIndex = 21;
-            this.btnShowSeatingEco.Text = "ECONOMY";
+            this.btnShowSeatingEco.Text = "Economy class passanger list";
             this.btnShowSeatingEco.UseVisualStyleBackColor = true;
             this.btnShowSeatingEco.Click += new System.EventHandler(this.btnShowSeatingEco_Click);
             // 
@@ -242,7 +244,7 @@
             this.Controls.Add(this.radioBtnCenter);
             this.Controls.Add(this.radioBtnWindow);
             this.Controls.Add(this.numPassengersSelector);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnShowSeating);
             this.Controls.Add(this.btnAssignSeats);
             this.Controls.Add(this.label4);
@@ -250,7 +252,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnExit);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.numPassengersSelector)).EndInit();
@@ -262,7 +264,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -270,7 +272,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnAssignSeats;
         private System.Windows.Forms.Button btnShowSeating;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.RadioButton radioBtnFirstClass;
         private System.Windows.Forms.RadioButton radioBtnEconomyClass;
         private System.Windows.Forms.NumericUpDown numPassengersSelector;
